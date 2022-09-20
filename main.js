@@ -11,11 +11,11 @@ constructor(nombre,edad,calle,numeracionCalle){
     this.numeracionCalle=numeracionCalle
     
 }
-modificarNombre = (nuevonombre) => (this.nombre = nuevonombre)
+/*modificarNombre = (nuevonombre) => (this.nombre = nuevonombre)
 modificarEdad = (nuevaedad) => (this.edad = nuevaedad)
 modificarCalle = (nuevacalle) => (this.calle = nuevacalle)
 modificarNumeracion = (nuevanumeracion) => (this.numeracionCalle = nuevanumeracion)
-}
+*/}
 function DatosPersona (){
     let nombre = document.getElementById("nombre").value
     let edad = document.getElementById("edad").value
@@ -41,6 +41,15 @@ OBJETO_PERSONA.id = Personas.length +1
 Personas.push(OBJETO_PERSONA) 
 AgregarPersonas()}
 
+function eliminarProducto(idPersona) {
+    let columnaBorrar = document.getElementById(`columna-${idPersona}`);
+    let indiceBorrar = Personas.findIndex(
+      (persona) => Number(persona.id) === Number(idPersona)
+    );
+  
+    Personas.splice(indiceBorrar, 1);
+    columnaBorrar.remove();
+  }
 
 function AgregarPersonas() {
     let ListaPersonas = document.getElementById("ListaPersonas");
@@ -85,6 +94,9 @@ function AgregarPersonas() {
 
               let botonModificarNombre = document.getElementById(`botonmodificarNombre-${persona.id}`);
               botonModificarNombre.onclick = () => modificarNombre(persona.id);
+            
+            
+            
             }
             )
              }
