@@ -71,14 +71,20 @@ function AgregarPersonas() {
                       </div>
                       </b>
                   </p>
-                  <p class="card-text">Precio edad:
-                      <b>${persona.edad}</b>
+                  <p class="card-text">Edad:
+                      <b><div id= "edadnuevo-${persona.id}">
+                      ${persona.edad}
+                      </div></b>
                   </p>
                   <p class="card-text">Precio calle:
-                      <b>${persona.calle}</b>
+                      <b><div id= "callenuevo-${persona.id}">
+                      ${persona.calle}
+                      </div></b>
                   </p>
                   <p class="card-text">Numeracion:
-                      <b>${persona.numeracionCalle}</b>
+                      <b><div id= "callenumeronuevo-${persona.id}">
+                      ${persona.numeracionCalle}
+                      </div></b>
                   </p>
                   </div>
                   <div class="card-footer">
@@ -87,6 +93,15 @@ function AgregarPersonas() {
                   <div class="card-footer">
                   <button class="btn btn-caution" id="botonmodificarNombre-${persona.id}" >modificar nombre</button>
               </div>
+              <div class="card-footer">
+              <button class="btn btn-caution" id="botonmodificarEdad-${persona.id}" >modificar edad</button>
+          </div>
+          <div class="card-footer">
+          <button class="btn btn-caution" id="botonmodificarCalle-${persona.id}" >modificar calle</button>
+      </div>
+      <div class="card-footer">
+          <button class="btn btn-caution" id="botonmodificarNumeroCalle-${persona.id}" >modificar Numeracion de calle</button>
+      </div>
               </div>`;
               ListaPersonas.append(column);
               let botonEliminar = document.getElementById(`botonEliminar-${persona.id}`);
@@ -95,8 +110,14 @@ function AgregarPersonas() {
               let botonModificarNombre = document.getElementById(`botonmodificarNombre-${persona.id}`);
               botonModificarNombre.onclick = () => modificarNombre(persona.id);
             
+              let botonModificarEdad = document.getElementById(`botonmodificarEdad-${persona.id}`);
+              botonModificarEdad.onclick = () => modificarEdad(persona.id);
             
-            
+              let botonModificarCalle = document.getElementById(`botonmodificarCalle-${persona.id}`);
+              botonModificarCalle.onclick = () => modificarCalle(persona.id);
+
+              let botonModificarNumeroCalle = document.getElementById(`botonmodificarNumeroCalle-${persona.id}`);
+              botonModificarNumeroCalle.onclick = () => modificarNumeracion(persona.id);
             }
             )
              }
@@ -108,4 +129,28 @@ function AgregarPersonas() {
 
             Personas[indicePersonaAbuscar].nombre = NombreModificado
             document.getElementById ("nombrenuevo-"+id).innerHTML= NombreModificado
+        }
+        function modificarEdad (id){
+            let EdadModificado = prompt("Ingrese la nuevo edad")
+            
+            let indicePersonaAbuscar = Personas.findIndex((persona => persona.id == id));
+
+            Personas[indicePersonaAbuscar].nombre = EdadModificado
+            document.getElementById ("edadnuevo-"+id).innerHTML= EdadModificado
+        }
+        function modificarCalle (id){
+            let CalleModificado = prompt("Ingrese la nueva calle")
+            
+            let indicePersonaAbuscar = Personas.findIndex((persona => persona.id == id));
+
+            Personas[indicePersonaAbuscar].calle = CalleModificado
+            document.getElementById ("callenuevo-"+id).innerHTML= CalleModificado
+        }
+        function modificarNumeracion (id){
+            let CalleNumeroModificado = prompt("Ingrese la nueva numeracion")
+            
+            let indicePersonaAbuscar = Personas.findIndex((persona => persona.id == id));
+
+            Personas[indicePersonaAbuscar].calle = CalleNumeroModificado
+            document.getElementById ("callenumeronuevo-"+id).innerHTML= CalleNumeroModificado
         }
